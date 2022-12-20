@@ -5,6 +5,10 @@ import './App.css'
 import Header from '../common/Header'
 import Journey from './Journey'
 import CitySelector from '../common/CitySelector'
+import SelectedDate from './SelectedDate'
+import DateSelector from '../common/DateSelector'
+import HighSpeed from './HighSpeed'
+import Submit from './Submit'
 // 引入action
 import {
   exchangeFromTo,
@@ -12,7 +16,12 @@ import {
   hiddenCitySelector,
   setSelectedCity,
   fetchCityData,
+  showDateSelector,
+  hiddenDateSelector,
+  setSelectedDate,
+  toggleHighSpeed,
 } from './actions'
+import { h0 } from '../common/time'
 function App(props) {
   const {
     from,
@@ -20,6 +29,9 @@ function App(props) {
     isCitySelectorVisible,
     isLoadingCityData,
     cityData,
+    selectedDate,
+    isDateSelectorVisible,
+    highSpeed,
     dispatch,
   } = props
 
@@ -27,6 +39,13 @@ function App(props) {
   const onBack = useCallback(() => {
     window.history.back()
   },[])
+  // 设置已选择的时间处理
+  const onSelectedDate = useCallback((day) => {
+    if(!day || day < h0()) return
+
+    dispatch(setSelectedDate(day))
+    dispatch(hiddenDateSelector())
+  },[dispatch])
 
   // 将action和dispatch组合起来
   const journeyCbs = useMemo(() => {
@@ -44,6 +63,24 @@ function App(props) {
     },dispatch)
   },[dispatch])
 
+  const selectedDateCbs = useMemo(() => {
+    return bindActionCreators({
+      showDateSelector,
+    },dispatch)
+  },[dispatch])
+
+  const dateSelectorCbs = useMemo(() => {
+    return bindActionCreators({
+      onBack: hiddenDateSelector,
+    },dispatch)
+  },[dispatch])
+
+  const highSpeedCbs = useMemo(() => {
+    return bindActionCreators({
+      toggleHighSpeed,
+    },dispatch)
+  },[dispatch])
+
   return (
     <Fragment>
       <div className="header-wrapper">
@@ -55,12 +92,20 @@ function App(props) {
             to={to} 
             {...journeyCbs}
           />
+          <SelectedDate time={selectedDate} {...selectedDateCbs}/>
+          <HighSpeed highSpeed={highSpeed} {...highSpeedCbs} />
+          <Submit />
         </form>
         <CitySelector 
           show={isCitySelectorVisible} 
           isLoading={isLoadingCityData}
           cityData={cityData}
           {...citySelectorCbs}
+        />
+        <DateSelector
+          show={isDateSelectorVisible}
+          {...dateSelectorCbs}
+          onSelected={onSelectedDate}
         />
     </Fragment>
   )
