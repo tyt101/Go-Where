@@ -13,6 +13,7 @@ function ListItem(props) {
     priceMsg,
     dayAfter,
   } = props
+  console.log(date)
   const url = useMemo(() => {
     return new URI('ticket.html')
         .setSearch('aStation', aStation)
