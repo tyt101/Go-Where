@@ -191,10 +191,10 @@ function BottomModal(props) {
       return checkedArriveStations
     }
   )
-  const [checkedDepartTimeStart,setCheckedDepartTimeStart] = useState(0)
-  const [checkedDepartTimeEnd,setCheckedDepartTimeEnd] = useState(24)
-  const [checkedArriveTimeStart,setCheckedArriveTimeStart] = useState(0)
-  const [checkedArriveTimeEnd,setCheckedArriveTimeEnd] = useState(24)
+  const [checkedDepartTimeStart,setCheckedDepartTimeStart] = useState(departTimeStart)
+  const [checkedDepartTimeEnd,setCheckedDepartTimeEnd] = useState(departTimeEnd)
+  const [checkedArriveTimeStart,setCheckedArriveTimeStart] = useState(arriveTimeStart)
+  const [checkedArriveTimeEnd,setCheckedArriveTimeEnd] = useState(arriveTimeEnd)
 
 
 
@@ -249,10 +249,10 @@ function BottomModal(props) {
     setCheckedDepartStations(checkedDepartStationsOptions)
     setCheckedArriveStations(checkedArriveStationsOptions)
 
-    setCheckedDepartTimeStart(checkedDepartTimeStart)
-    setCheckedDepartTimeEnd(checkedDepartTimeEnd)
-    setCheckedArriveTimeStart(checkedArriveTimeStart)
-    setCheckedArriveTimeEnd(checkedArriveTimeEnd)
+    setDepartTimeStart(checkedDepartTimeStart)
+    setDepartTimeEnd(checkedDepartTimeEnd)
+    setArriveTimeStart(checkedArriveTimeStart)
+    setArriveTimeEnd(checkedArriveTimeEnd)
 
     toggleIsFilterVisible()
   }
