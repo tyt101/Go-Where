@@ -72,7 +72,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "prepare": "husky install",
-    "format": "eslint src/**/*.{jsx,js} --fix"
+    "format": "prettier src/**/*.{jsx,js,css,md} --write && eslint src/**/*.{jsx,js} --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -80,7 +80,7 @@
       "react-app/jest"
     ],
     "rules": {
-      "react/jsx-indent":[
+      "react/jsx-indent": [
         "error",
         2
       ]
@@ -153,16 +153,22 @@
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "husky": "^8.0.2",
-    "lint-staged": "^13.1.0"
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1"
   },
-  "husky":{
-    "hooks":{
-      "pre-commit":"lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
   },
-  "lint-staged":{
-    "*.{jsx,js}":[
+  "lint-staged": {
+    "*.{jsx,js}": [
+      "prettier --write",
       "eslint --fix",
+      "git add"
+    ],
+    "*.{css,md}": [
+      
       "git add"
     ]
   }

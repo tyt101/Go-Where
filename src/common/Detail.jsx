@@ -1,10 +1,10 @@
-import React from 'react'
-import dayjs from 'dayjs';
-import './Detail.css'
+import React from "react";
+import dayjs from "dayjs";
+import "./Detail.css";
 function format(d) {
   const date = dayjs(d);
 
-  return date.format('MM-DD') + ' ' + date.locale('zh-cn').format('ddd');
+  return date.format("MM-DD") + " " + date.locale("zh-cn").format("ddd");
 }
 export default function Detail(props) {
   const {
@@ -16,7 +16,7 @@ export default function Detail(props) {
     arriveStationStr,
     durationStr,
     trainNumberStr,
-  } = props
+  } = props;
   return (
     <div className="detail">
       <div className="content">
@@ -27,9 +27,7 @@ export default function Detail(props) {
         </div>
         <div className="middle">
           <p className="train-name">{trainNumberStr}</p>
-          <p className="train-mid">
-            {props.children}
-          </p>
+          <p className="train-mid">{props.children}</p>
           <p className="train-time">耗时{durationStr}</p>
         </div>
         <div className="right">
@@ -39,5 +37,5 @@ export default function Detail(props) {
         </div>
       </div>
     </div>
-  )
+  );
 }

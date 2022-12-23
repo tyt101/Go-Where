@@ -1,5 +1,5 @@
-import { 
-  ACTION_SET_FROM ,
+import {
+  ACTION_SET_FROM,
   ACTION_SET_TO,
   ACTION_SET_DEPART_DATE,
   ACTION_SET_HIGH_SPEED,
@@ -20,105 +20,105 @@ import {
   ACTION_SET_ARRIVE_TIME_END,
   ACTION_SET_IS_FILTER_VISIBLE,
   ACTION_SET_SEARCH_PARSED,
-} from "./actions"
+} from "./actions";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   from(state = null, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_FROM:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   to(state = null, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_TO:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   departDate(state = Date.now(), actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_DEPART_DATE:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   highSpeed(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     let checkedTrainsType;
     switch (type) {
       case ACTION_SET_HIGH_SPEED:
         return payload;
       case ACTION_SET_CHECKED_TRAINS_TYPE:
-        checkedTrainsType = payload
+        checkedTrainsType = payload;
         return Boolean(checkedTrainsType[1] && checkedTrainsType[5]);
       default:
     }
-    return state
+    return state;
   },
   trainList(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_TRAIN_LIST:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   orderType(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_ORDER_TYPE:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   onlyTickets(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_ONLY_TICKETS:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   ticketsType(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_TICKETS_TYPE:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   checkedTicketsType(state = {}, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_CHECKED_TICKETS_TYPE:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   trainsType(state = {}, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_TRAINS_TYPE:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   checkedTrainsType(state = {}, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     let highSpeed;
     let newCheckedTrainTypes;
     switch (type) {
@@ -129,106 +129,106 @@ export default {
         newCheckedTrainTypes = { ...state };
 
         if (highSpeed) {
-            newCheckedTrainTypes[1] = true;
-            newCheckedTrainTypes[5] = true;
+          newCheckedTrainTypes[1] = true;
+          newCheckedTrainTypes[5] = true;
         } else {
-            delete newCheckedTrainTypes[1];
-            delete newCheckedTrainTypes[5];
+          delete newCheckedTrainTypes[1];
+          delete newCheckedTrainTypes[5];
         }
 
         return newCheckedTrainTypes;
       default:
     }
-    return state
+    return state;
   },
   departStations(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_DEPART_STATIONS:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   checkedDepartStations(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_CHECKED_DEPART_STATIONS:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   arriveStations(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
-      case   ACTION_SET_ARRIVE_STATIONS:
+      case ACTION_SET_ARRIVE_STATIONS:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   checkedArriveStations(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_CHECKED_ARRIVE_STATIONS:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   departTimeStart(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_DEPART_TIME_START:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   departTimeEnd(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_DEPART_TIME_END:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   arriveTimeStart(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_ARRIVE_TIME_START:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   arriveTimeEnd(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_ARRIVE_TIME_END:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   isFilterVisible(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_IS_FILTER_VISIBLE:
         return payload;
       default:
     }
-    return state
+    return state;
   },
   searchParsed(state = false, actions) {
-    const {type, payload} = actions
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_SEARCH_PARSED:
         return payload;
       default:
     }
-    return state
+    return state;
   },
-}
+};

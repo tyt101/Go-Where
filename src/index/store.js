@@ -1,15 +1,13 @@
-import {
-  createStore, combineReducers, applyMiddleware
-} from 'redux'
-import reducers from './reducers'
-import thunk from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import reducers from "./reducers";
+import thunk from "redux-thunk";
 
 // createStore(reducers,initStates,enhancers)
 export default createStore(
   combineReducers(reducers),
   {
-    from: '北京',
-    to: '上海',
+    from: "北京",
+    to: "上海",
     isCitySelectorVisible: false,
     currentSelectingLeftCity: false,
     cityData: null,
@@ -19,4 +17,4 @@ export default createStore(
     highSpeed: false,
   },
   applyMiddleware(thunk)
-) 
+);

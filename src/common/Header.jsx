@@ -1,8 +1,8 @@
-import React, { memo } from 'react'
-import './Header.css'
+import React, { memo } from "react";
+import "./Header.css";
 
 const Header = memo(function Header(props) {
-  const {title, onBack} = props
+  const { title, onBack } = props;
   return (
     <div className="header">
       <div className="header-back" onClick={() => onBack()}>
@@ -17,7 +17,7 @@ const Header = memo(function Header(props) {
       </div>
       <h1 className="header-title">{title}</h1>
     </div>
-  )
-})
+  );
+});
 
-export default Header
+export default Header;

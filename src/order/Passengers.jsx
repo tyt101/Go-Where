@@ -1,6 +1,6 @@
-import React, { memo } from 'react'
-import PropTypes from 'prop-types'
-import './Passengers.css'
+import React, { memo } from "react";
+import PropTypes from "prop-types";
+import "./Passengers.css";
 const Passenger = memo(function Passenger(props) {
   const {
     id,
@@ -15,9 +15,9 @@ const Passenger = memo(function Passenger(props) {
     showGenderTypeMenu,
     showFollowAdultMenu,
     removePassenger,
-  } = props
+  } = props;
 
-  const isAdult = ticketType === 'Adult';
+  const isAdult = ticketType === "Adult";
 
   return (
     <li className="passenger">
@@ -32,75 +32,71 @@ const Passenger = memo(function Passenger(props) {
             className="input name"
             placeholder="乘客姓名"
             value={name}
-            onChange={(e) => updatePassenger(id,{name: e.target.value})}
+            onChange={(e) => updatePassenger(id, { name: e.target.value })}
           />
           <label
-              className="ticket-type"
-              onClick={() => showPassengersTypeMenu(id)}
+            className="ticket-type"
+            onClick={() => showPassengersTypeMenu(id)}
           >
-            {isAdult ? '成人票' : '儿童票'}
+            {isAdult ? "成人票" : "儿童票"}
           </label>
         </li>
         {isAdult && (
           <li className="item">
             <label className="label licenceNo">身份证</label>
             <input
-                type="text"
-                className="input licenceNo"
-                placeholder="证件号码"
-                value={credit}
-                onChange={(e) => updatePassenger(id,{credit:e.target.value})}
-              />
+              type="text"
+              className="input licenceNo"
+              placeholder="证件号码"
+              value={credit}
+              onChange={(e) => updatePassenger(id, { credit: e.target.value })}
+            />
           </li>
         )}
-        {
-          !isAdult && (
-            <li className="item">
-              <label className="label gender">性别</label>
-              <input
-                type="text"
-                className="input gender"
-                placeholder="性别"
-                value={gender === 'male' ? '男' : gender === 'female' ? '女' : ''}
-                readOnly
-                onClick={() => showGenderTypeMenu(id)}
-              />
-            </li>
-          )
-        }
-        {
-          !isAdult && (
-            <li className="item">
-              <label className="label birthday">出生日期</label>
-              <input
-                type="text"
-                className="input birthday"
-                placeholder="出生日期"
-                value={birthday}
-                onChange={(e) => updatePassenger(id,{birthday:e.target.value})}
-              />
-            </li>
-          )
-        }
-        {
-          !isAdult && (
-            <li className="item">
-              <label className="label followAdultName">同行成人</label>
-              <input
-                type="text"
-                className="input followAdultName"
-                placeholder="同行成人"
-                value={followAdultName}
-                readOnly
-                onClick={() => showFollowAdultMenu(id)}
-              />
-            </li>
-          )
-        }
+        {!isAdult && (
+          <li className="item">
+            <label className="label gender">性别</label>
+            <input
+              type="text"
+              className="input gender"
+              placeholder="性别"
+              value={gender === "male" ? "男" : gender === "female" ? "女" : ""}
+              readOnly
+              onClick={() => showGenderTypeMenu(id)}
+            />
+          </li>
+        )}
+        {!isAdult && (
+          <li className="item">
+            <label className="label birthday">出生日期</label>
+            <input
+              type="text"
+              className="input birthday"
+              placeholder="出生日期"
+              value={birthday}
+              onChange={(e) =>
+                updatePassenger(id, { birthday: e.target.value })
+              }
+            />
+          </li>
+        )}
+        {!isAdult && (
+          <li className="item">
+            <label className="label followAdultName">同行成人</label>
+            <input
+              type="text"
+              className="input followAdultName"
+              placeholder="同行成人"
+              value={followAdultName}
+              readOnly
+              onClick={() => showFollowAdultMenu(id)}
+            />
+          </li>
+        )}
       </ol>
     </li>
-  )
-})
+  );
+});
 Passenger.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
@@ -114,7 +110,7 @@ Passenger.propTypes = {
   showGenderTypeMenu: PropTypes.func.isRequired,
   showFollowAdultMenu: PropTypes.func.isRequired,
   removePassenger: PropTypes.func.isRequired,
-}
+};
 const Passengers = memo(function Passengers(props) {
   const {
     passengers,
@@ -124,32 +120,31 @@ const Passengers = memo(function Passengers(props) {
     removePassenger,
     createAdult,
     createChild,
-    updatePassenger
-  } = props
+    updatePassenger,
+  } = props;
 
   const followAdultName = (followAdultId) => {
-    for(let passenger of passengers) {
-      if(passenger.id === followAdultId)
-        return passenger.name
+    for (let passenger of passengers) {
+      if (passenger.id === followAdultId) return passenger.name;
     }
-  }
+  };
   return (
     <div className="passengers">
       <ul>
-        {
-          passengers.map(passenger => {
-            return <Passenger 
-            key={passenger.id} 
-            {...passenger} 
-            updatePassenger={updatePassenger}
-            followAdultName={followAdultName(passenger.followAdult)}
-            showPassengersTypeMenu={showPassengersTypeMenu}
-            showGenderTypeMenu={showGenderTypeMenu}
-            showFollowAdultMenu={showFollowAdultMenu}
-            removePassenger={removePassenger}
+        {passengers.map((passenger) => {
+          return (
+            <Passenger
+              key={passenger.id}
+              {...passenger}
+              updatePassenger={updatePassenger}
+              followAdultName={followAdultName(passenger.followAdult)}
+              showPassengersTypeMenu={showPassengersTypeMenu}
+              showGenderTypeMenu={showGenderTypeMenu}
+              showFollowAdultMenu={showFollowAdultMenu}
+              removePassenger={removePassenger}
             />
-          })
-        }
+          );
+        })}
       </ul>
       <section className="add">
         <div className="adult" onClick={() => createAdult()}>
@@ -160,8 +155,8 @@ const Passengers = memo(function Passengers(props) {
         </div>
       </section>
     </div>
-  )
-})
+  );
+});
 Passengers.propTypes = {
   passengers: PropTypes.array.isRequired,
   showPassengersTypeMenu: PropTypes.func.isRequired,
@@ -171,5 +166,5 @@ Passengers.propTypes = {
   createAdult: PropTypes.func.isRequired,
   createChild: PropTypes.func.isRequired,
   updatePassenger: PropTypes.func.isRequired,
-}
-export default Passengers
+};
+export default Passengers;

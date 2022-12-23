@@ -1,11 +1,9 @@
-import classNames from 'classnames'
-import React, { memo } from 'react'
-import PropTypes from 'prop-types'
-import './HighSpeed.css'
+import classNames from "classnames";
+import React, { memo } from "react";
+import PropTypes from "prop-types";
+import "./HighSpeed.css";
 const HighSpeed = memo(function HighSpeed(props) {
-
-  const {highSpeed, toggleHighSpeed} = props
-
+  const { highSpeed, toggleHighSpeed } = props;
 
   return (
     <div className="high-speed">
@@ -13,22 +11,22 @@ const HighSpeed = memo(function HighSpeed(props) {
       <div className="high-speed-switch" onClick={() => toggleHighSpeed()}>
         <input type="hidden" name="highSpeed" value={highSpeed} />
         <div
-          className={classNames('high-speed-track', {
-              checked: highSpeed,
+          className={classNames("high-speed-track", {
+            checked: highSpeed,
           })}
         >
           <span
-            className={classNames('high-speed-handle', {
-                checked: highSpeed,
+            className={classNames("high-speed-handle", {
+              checked: highSpeed,
             })}
           ></span>
         </div>
       </div>
     </div>
-  )
-})
+  );
+});
 HighSpeed.propTypes = {
   highSpeed: PropTypes.bool.isRequired,
-  toggleHighSpeed:PropTypes.func.isRequired
-}
-export default HighSpeed
+  toggleHighSpeed: PropTypes.func.isRequired,
+};
+export default HighSpeed;

@@ -1,7 +1,7 @@
-import React, { memo, useMemo } from 'react'
-import PropTypes from 'prop-types'
-import './List.css'
-import URI from 'urijs';
+import React, { memo, useMemo } from "react";
+import PropTypes from "prop-types";
+import "./List.css";
+import URI from "urijs";
 const ListItem = memo(function ListItem(props) {
   const {
     dTime,
@@ -13,15 +13,15 @@ const ListItem = memo(function ListItem(props) {
     time,
     priceMsg,
     dayAfter,
-  } = props
+  } = props;
   const url = useMemo(() => {
-    return new URI('ticket.html')
-        .setSearch('aStation', aStation)
-        .setSearch('dStation', dStation)
-        .setSearch('trainNumber', trainNumber)
-        .setSearch('date', date)
-        .toString();
-}, [aStation, dStation, trainNumber, date]);
+    return new URI("ticket.html")
+      .setSearch("aStation", aStation)
+      .setSearch("dStation", dStation)
+      .setSearch("trainNumber", trainNumber)
+      .setSearch("date", date)
+      .toString();
+  }, [aStation, dStation, trainNumber, date]);
   return (
     <li className="list-item">
       <a href={url}>
@@ -55,8 +55,8 @@ const ListItem = memo(function ListItem(props) {
         </span>
       </a>
     </li>
-  )
-})
+  );
+});
 ListItem.propTypes = {
   dTime: PropTypes.string.isRequired,
   aTime: PropTypes.string.isRequired,
@@ -67,20 +67,18 @@ ListItem.propTypes = {
   time: PropTypes.string.isRequired,
   priceMsg: PropTypes.string.isRequired,
   dayAfter: PropTypes.string.isRequired,
-}
+};
 const List = memo(function List(props) {
-  const {list} = props
+  const { list } = props;
   return (
     <ul className="list">
-      {
-        list.map(item => {
-          return <ListItem {...item} key={item.trainNumber} />
-        })
-      }
+      {list.map((item) => {
+        return <ListItem {...item} key={item.trainNumber} />;
+      })}
     </ul>
-  )
-})
+  );
+});
 List.propTypes = {
   list: PropTypes.array.isRequired,
-}
-export default List
+};
+export default List;

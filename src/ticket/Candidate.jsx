@@ -1,34 +1,31 @@
-import React, { memo, useContext, useMemo, useState } from 'react'
-import { TrainContext } from './context'
-import './Candidate.css'
-import URI from 'urijs'
-import dayjs from 'dayjs'
+import React, { memo, useContext, useMemo, useState } from "react";
+import { TrainContext } from "./context";
+import "./Candidate.css";
+import URI from "urijs";
+import dayjs from "dayjs";
 function Candidate(props) {
-
-  const { tickets } = props
-  const [expandIdx, setExpandIdx] = useState(-1)
+  const { tickets } = props;
+  const [expandIdx, setExpandIdx] = useState(-1);
   const onToggle = (idx) => {
-    setExpandIdx(expandIdx === idx ? -1 : idx)
-  }
+    setExpandIdx(expandIdx === idx ? -1 : idx);
+  };
   return (
     <div className="candidate">
       <ul>
-        {
-          tickets.map((ticket, index) => {
-            return (
-              <Seat 
-                key = {ticket.type}
-                {...ticket}
-                idx={index}
-                onToggle={onToggle}
-                expand={expandIdx === index}
-              />
-            )
-          })
-        }
+        {tickets.map((ticket, index) => {
+          return (
+            <Seat
+              key={ticket.type}
+              {...ticket}
+              idx={index}
+              onToggle={onToggle}
+              expand={expandIdx === index}
+            />
+          );
+        })}
       </ul>
     </div>
-  )
+  );
 }
 const Seat = memo(function Seat(props) {
   const {
@@ -39,8 +36,8 @@ const Seat = memo(function Seat(props) {
     type,
     ticketsLeft,
     priceMsg,
-    channels
-  } = props
+    channels,
+  } = props;
   return (
     <li>
       <div className="bar">
@@ -49,42 +46,37 @@ const Seat = memo(function Seat(props) {
           <i>￥</i>
           {priceMsg}
         </span>
-        <span className="btn" onClick={() => onToggle(idx)}>{expand ? '预订' : '收起'}</span>
+        <span className="btn" onClick={() => onToggle(idx)}>
+          {expand ? "预订" : "收起"}
+        </span>
         <span className="num">{ticketsLeft}</span>
       </div>
-      <div 
+      <div
         className="channels"
-        style={{height: expand ? channels.length * 55 + 'px' : 0 }}
+        style={{ height: expand ? channels.length * 55 + "px" : 0 }}
       >
-        {
-          channels.map(channel => {
-            return <Channel {...channel} type={type} key={channel.name} />
-          })
-        }
+        {channels.map((channel) => {
+          return <Channel {...channel} type={type} key={channel.name} />;
+        })}
       </div>
     </li>
-  )
-})
-
+  );
+});
 
 const Channel = memo(function Channel(props) {
-  const {desc, name, type} = props
-  const {
-    trainNumberStr,
-    departStationStr,
-    arriveStationStr,
-    departDate,
-  } = useContext(TrainContext)
+  const { desc, name, type } = props;
+  const { trainNumberStr, departStationStr, arriveStationStr, departDate } =
+    useContext(TrainContext);
 
   const src = useMemo(() => {
-    return new URI('/order.html')
-    .setSearch('trainNumberStr',trainNumberStr)
-    .setSearch('type',type)
-    .setSearch('departStationStr',departStationStr)
-    .setSearch('arriveStationStr',arriveStationStr)
-    .setSearch('departDate',dayjs(departDate).format('YYYY-MM-DD'))
-    .toString()
-  },[arriveStationStr, departDate, departStationStr, trainNumberStr, type])
+    return new URI("/order.html")
+      .setSearch("trainNumberStr", trainNumberStr)
+      .setSearch("type", type)
+      .setSearch("departStationStr", departStationStr)
+      .setSearch("arriveStationStr", arriveStationStr)
+      .setSearch("departDate", dayjs(departDate).format("YYYY-MM-DD"))
+      .toString();
+  }, [arriveStationStr, departDate, departStationStr, trainNumberStr, type]);
 
   return (
     <div className="channel">
@@ -96,7 +88,7 @@ const Channel = memo(function Channel(props) {
         <div className="buy">买票</div>
       </a>
     </div>
-  )
-})
+  );
+});
 
-export default Candidate
+export default Candidate;

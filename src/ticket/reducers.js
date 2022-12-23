@@ -1,5 +1,4 @@
-
-import { 
+import {
   ACTION_SET_DEPART_DATE,
   ACTION_SET_ARRIVE_DATE,
   ACTION_SET_DEPART_TIME_STR,
@@ -11,108 +10,107 @@ import {
   ACTION_SET_IS_SCHEDULE_VISIBLE,
   ACTION_SET_SEARCH_PARSED,
   ACTION_SET_TICKETS,
- } from "./actions";
-
+} from "./actions";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  departDate(state = Date.now(), actions){
-    const {type, payload} = actions
+  departDate(state = Date.now(), actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_DEPART_DATE:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  arriveDate(state = new Date(), actions){
-    const {type, payload} = actions
+  arriveDate(state = new Date(), actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_ARRIVE_DATE:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  departTimeStr(state = null, actions){
-    const {type, payload} = actions
+  departTimeStr(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_DEPART_TIME_STR:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  arriveTimeStr(state = null, actions){
-    const {type, payload} = actions
+  arriveTimeStr(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_ARRIVE_TIME_STR:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  departStationStr(state = null, actions){
-    const {type, payload} = actions
+  departStationStr(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_DEPART_STATION_STR:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  arriveStationStr(state = null, actions){
-    const {type, payload} = actions
+  arriveStationStr(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_ARRIVE_STATION_STR:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  trainNumberStr(state = null, actions){
-    const {type, payload} = actions
+  trainNumberStr(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_TRAIN_NUMBER_STR:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  durationStr(state = null, actions){
-    const {type, payload} = actions
+  durationStr(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_DURATION_STR:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  isScheduleVisible(state = null, actions){
-    const {type, payload} = actions
+  isScheduleVisible(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_IS_SCHEDULE_VISIBLE:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  searchParsed(state = null, actions){
-    const {type, payload} = actions
+  searchParsed(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_SEARCH_PARSED:
-        return payload
+        return payload;
       default:
     }
-    return state
+    return state;
   },
-  tickets(state = null, actions){
-    const {type, payload} = actions
+  tickets(state = null, actions) {
+    const { type, payload } = actions;
     switch (type) {
       case ACTION_SET_TICKETS:
-        return payload
+        return payload;
       default:
     }
-    return state
-  }
-}
+    return state;
+  },
+};
