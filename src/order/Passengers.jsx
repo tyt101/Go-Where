@@ -22,7 +22,7 @@ const Passenger = memo(function Passenger(props) {
   return (
     <li className="passenger">
       <i className="delete" onClick={() => removePassenger(id)}>
-          —
+        —
       </i>
       <ol className="items">
         <li className="item">
@@ -43,8 +43,8 @@ const Passenger = memo(function Passenger(props) {
         </li>
         {isAdult && (
           <li className="item">
-              <label className="label licenceNo">身份证</label>
-              <input
+            <label className="label licenceNo">身份证</label>
+            <input
                 type="text"
                 className="input licenceNo"
                 placeholder="证件号码"
@@ -65,7 +65,7 @@ const Passenger = memo(function Passenger(props) {
                 readOnly
                 onClick={() => showGenderTypeMenu(id)}
               />
-          </li>
+            </li>
           )
         }
         {
@@ -79,7 +79,7 @@ const Passenger = memo(function Passenger(props) {
                 value={birthday}
                 onChange={(e) => updatePassenger(id,{birthday:e.target.value})}
               />
-          </li>
+            </li>
           )
         }
         {
@@ -94,7 +94,7 @@ const Passenger = memo(function Passenger(props) {
                 readOnly
                 onClick={() => showFollowAdultMenu(id)}
               />
-          </li>
+            </li>
           )
         }
       </ol>
@@ -152,12 +152,12 @@ const Passengers = memo(function Passengers(props) {
         }
       </ul>
       <section className="add">
-          <div className="adult" onClick={() => createAdult()}>
-              添加成人
-          </div>
-          <div className="child" onClick={() => createChild()}>
-              添加儿童
-          </div>
+        <div className="adult" onClick={() => createAdult()}>
+          添加成人
+        </div>
+        <div className="child" onClick={() => createChild()}>
+          添加儿童
+        </div>
       </section>
     </div>
   )

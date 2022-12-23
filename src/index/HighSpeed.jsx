@@ -11,7 +11,7 @@ const HighSpeed = memo(function HighSpeed(props) {
     <div className="high-speed">
       <div className="high-speed-label">只看高铁/动车</div>
       <div className="high-speed-switch" onClick={() => toggleHighSpeed()}>
-      <input type="hidden" name="highSpeed" value={highSpeed} />
+        <input type="hidden" name="highSpeed" value={highSpeed} />
         <div
           className={classNames('high-speed-track', {
               checked: highSpeed,

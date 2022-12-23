@@ -129,7 +129,7 @@ function App(props) {
               className="schedule"
               onClick={() => detailCbs.toggleIsScheduleVisible()}
           >
-              时刻表
+            时刻表
           </span>
           <span className="right"></span>
         </Detail>

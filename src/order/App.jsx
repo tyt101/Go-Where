@@ -135,7 +135,7 @@ function App(props) {
               arriveStationStr={arriveStationStr}
               durationStr={durationTime}
           >
-              <span
+            <span
                   style={{ display: 'block' }}
                   className="train-icon"
               ></span>

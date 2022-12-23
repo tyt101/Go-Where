@@ -45,7 +45,7 @@ const AlphaIndex = memo(function AlphaIndex(props) {
   const {alpha, onClick} = props
   return (
     <i className="city-index-item" onClick={() => onClick(alpha)}>
-        {alpha}
+      {alpha}
     </i>
   )
 })
@@ -57,10 +57,10 @@ const CityList = memo(function CityList(props) {
   const {sections,onSelected,toAlpha} = props
   return (
     <div className="city-list">
-        <div className="city-cate">
-            {sections.map(section => {
+      <div className="city-cate">
+        {sections.map(section => {
                 return (
-                    <CitySection
+                  <CitySection
                         key={section.title}
                         title={section.title}
                         cities={section.citys}
@@ -68,18 +68,18 @@ const CityList = memo(function CityList(props) {
                     />
                 );
             })}
-        </div>
-        <div className="city-index">
-            {
+      </div>
+      <div className="city-index">
+        {
               alphabet.map(alpha => {
                 return <AlphaIndex 
                         key={alpha} 
                         alpha={alpha} 
                         onClick={toAlpha}  
-                      />
+                />
               })
             }
-        </div>
+      </div>
     </div>
   )
 })
@@ -118,7 +118,7 @@ const Suggest = memo(function Suggest(props) {
   return (
     <div className="city-suggest">
       <ul className="city-suggest-ul">
-      {
+        {
         fallBackResult.map(result => {
           return <SuggestItem key={result.key} name={result.display} onSelected={onSelected} />
         })
@@ -173,7 +173,7 @@ const CitySelector = memo(function CitySelector(props) {
       <div className="city-search">
         <div className="search-back" onClick={() => onBack()}>
           <svg width="42" height="42">
-              <polyline
+            <polyline
                   points="25,13 16,21 25,29"
                   stroke="#fff"
                   strokeWidth="2"
@@ -196,7 +196,7 @@ const CitySelector = memo(function CitySelector(props) {
               hidden: key.length === 0,
           })}
         >
-            &#xf063;
+          &#xf063;
         </i>
       </div>
       {

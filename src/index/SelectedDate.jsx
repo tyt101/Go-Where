@@ -14,8 +14,8 @@ const SelectedDate = memo(function SelectedDate(props) {
   const weekString = '周' + ['日','一','二','三','四','五','六'][selectedDate.getDay()]+ (isToday ? '(今天)': '' )
   return (
     <div className="selected-date" onClick={() => showDateSelector()}>
-        <input type="hidden" name="date" value={selectedDateString} />
-        {selectedDateString} <span className="selected-week">{weekString}</span>
+      <input type="hidden" name="date" value={selectedDateString} />
+      {selectedDateString} <span className="selected-week">{weekString}</span>
     </div>
   );
 })

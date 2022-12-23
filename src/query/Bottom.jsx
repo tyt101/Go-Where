@@ -52,41 +52,41 @@ const Bottom = memo(function Bottom(props) {
     return false
   },[arriveTimeEnd, arriveTimeStart, checkedArriveStations, checkedDepartStations, checkedTicketsType, checkedTrainsType, departTimeEnd, departTimeStart])
   return (
-      <div className="bottom">
-        <div className="bottom-filters">
-          <span className='item' onClick={() => !isFilterVisible && toggleOrderType()}>
-            <i className="icon">&#xf065;</i>
-            {orderType === orderEnumsType.ORDER_DEPART ? '出发 早→晚' : '耗时 短→长'}
-          </span>
-          <span 
+    <div className="bottom">
+      <div className="bottom-filters">
+        <span className='item' onClick={() => !isFilterVisible && toggleOrderType()}>
+          <i className="icon">&#xf065;</i>
+          {orderType === orderEnumsType.ORDER_DEPART ? '出发 早→晚' : '耗时 短→长'}
+        </span>
+        <span 
             className={classNames('item',{
               'item-on': highSpeed
             })}
             onClick={() => !isFilterVisible && toggleHighSpeed()}
           >
-            <i className="icon">{highSpeed ? '\uf43f' : '\uf43e'}</i>
-            只看高铁动车
-          </span>
-          <span 
+          <i className="icon">{highSpeed ? '\uf43f' : '\uf43e'}</i>
+          只看高铁动车
+        </span>
+        <span 
             className={classNames('item', {
               'item-on':onlyTickets
             })}
             onClick={() => !isFilterVisible && toggleOnlyTickets()}
           >
-            <i className="icon">{onlyTickets ? '\uf43d' : '\uf43c'}</i>
-            只看有票
-          </span>
-          <span 
+          <i className="icon">{onlyTickets ? '\uf43d' : '\uf43c'}</i>
+          只看有票
+        </span>
+        <span 
             className={classNames('item',{
               'item-on':!noChecked || isFilterVisible
             })}
             onClick={() => toggleIsFilterVisible()}
           >
-            <i className="icon">{noChecked ? '\uf0f7' : '\uf446'}</i>
-            综合筛选
-          </span>
-        </div>
-        {
+          <i className="icon">{noChecked ? '\uf0f7' : '\uf446'}</i>
+          综合筛选
+        </span>
+      </div>
+      {
           isFilterVisible && (
             <BottomModal 
               trainsType={trainsType}
@@ -116,7 +116,7 @@ const Bottom = memo(function Bottom(props) {
             />
           )
         }
-      </div>
+    </div>
   );
 })
 Bottom.propTypes = {
@@ -379,7 +379,7 @@ const Option = memo(function Option(props) {
                     {...option} 
                     checked={option.value in checkedOptions}  
                     dispatch={dispatch}
-                  />
+            />
           })
         }
       </ul>

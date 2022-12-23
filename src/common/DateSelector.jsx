@@ -26,9 +26,9 @@ const Day = memo(function Day(props) {
     const dateString = now === day ? '今天' : new Date(day).getDate();
 
     return (
-        <td className={classNames(classes)} onClick={() => onSelected(day)}>
-            {dateString}
-        </td>
+      <td className={classNames(classes)} onClick={() => onSelected(day)}>
+        {dateString}
+      </td>
     );
 })
 Day.propTypes = {
@@ -78,7 +78,7 @@ const Month = memo(function Month(props) {
       <thead>
         <tr>
           <td colSpan={7}>
-              {startDay.getFullYear()}年{startDay.getMonth()+1}月
+            {startDay.getFullYear()}年{startDay.getMonth()+1}月
           </td>
         </tr>
       </thead>

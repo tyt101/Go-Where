@@ -29,7 +29,7 @@ const Menu = memo(function Menu(props) {
       <div className={classNames('menu', { show })}>
         <div className="menu-title"></div>
         <ul>
-            {options &&
+          {options &&
               options.map(option => {
                   return <MenuItem key={option.title} {...option} onClick={onClick} />
               })}

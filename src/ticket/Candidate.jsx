@@ -46,8 +46,8 @@ const Seat = memo(function Seat(props) {
       <div className="bar">
         <span className="seat">{type}</span>
         <span className="price">
-            <i>￥</i>
-            {priceMsg}
+          <i>￥</i>
+          {priceMsg}
         </span>
         <span className="btn" onClick={() => onToggle(idx)}>{expand ? '预订' : '收起'}</span>
         <span className="num">{ticketsLeft}</span>
@@ -88,13 +88,13 @@ const Channel = memo(function Channel(props) {
 
   return (
     <div className="channel">
-        <div className="middle">
-            <div className="name">{name}</div>
-            <div className="desc">{desc}</div>
-        </div>
-        <a href={src} className="buy-wrapper">
-            <div className="buy">买票</div>
-        </a>
+      <div className="middle">
+        <div className="name">{name}</div>
+        <div className="desc">{desc}</div>
+      </div>
+      <a href={src} className="buy-wrapper">
+        <div className="buy">买票</div>
+      </a>
     </div>
   )
 })

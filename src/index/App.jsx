@@ -87,22 +87,22 @@ function App(props) {
         <Header title="趣家" onBack={onBack} />
       </div>
       <form action="./query.html" className="form">
-          <Journey 
+        <Journey 
             from={from} 
             to={to} 
             {...journeyCbs}
           />
-          <SelectedDate time={selectedDate} {...selectedDateCbs}/>
-          <HighSpeed highSpeed={highSpeed} {...highSpeedCbs} />
-          <Submit />
-        </form>
-        <CitySelector 
+        <SelectedDate time={selectedDate} {...selectedDateCbs}/>
+        <HighSpeed highSpeed={highSpeed} {...highSpeedCbs} />
+        <Submit />
+      </form>
+      <CitySelector 
           show={isCitySelectorVisible} 
           isLoading={isLoadingCityData}
           cityData={cityData}
           {...citySelectorCbs}
         />
-        <DateSelector
+      <DateSelector
           show={isDateSelectorVisible}
           {...dateSelectorCbs}
           onSelected={onSelectedDate}

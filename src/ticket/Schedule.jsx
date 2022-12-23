@@ -80,10 +80,10 @@ function Schedule(props) {
       <div className="dialog">
         <h1>列车时刻表</h1>
         <div className="head">
-            <span className="station">车站</span>
-            <span className="deptime">到达</span>
-            <span className="arrtime">发车</span>
-            <span className="stoptime">停留时间</span>
+          <span className="station">车站</span>
+          <span className="deptime">到达</span>
+          <span className="arrtime">发车</span>
+          <span className="stoptime">停留时间</span>
         </div>
         <ul>
           {
@@ -115,49 +115,49 @@ const ScheduleItem = memo(function ScheduleItem(props) {
   } = props
   return (
     <li>
-        <div
+      <div
             className={classNames('icon', {
                 'icon-red': isDepartStation || isArriveStation,
             })}
         >
-            {isDepartStation
+        {isDepartStation
                 ? '出'
                 : isArriveStation
                 ? '到'
                 : leftPad(index, 2, 0)}
-        </div>
-        <div
+      </div>
+      <div
             className={classNames('row', {
                 grey: beforeDepartStation || afterArriveStation,
             })}
         >
-            <span
+        <span
                 className={classNames('station', {
                     red: isArriveStation || isDepartStation,
                 })}
             >
-                {station}
-            </span>
-            <span
+          {station}
+        </span>
+        <span
                 className={classNames('arrtime', {
                     red: isArriveStation,
                 })}
             >
-                {isStartStation ? '始发站' : arriveTime}
-            </span>
-            <span
+          {isStartStation ? '始发站' : arriveTime}
+        </span>
+        <span
                 className={classNames('deptime', {
                     red: isDepartStation,
                 })}
             >
-                {isEndStation ? '终到站' : departTime}
-            </span>
-            <span className="stoptime">
-                {isStartStation || isEndStation ? '-' : stay + '分'}
-            </span>
-        </div>
+          {isEndStation ? '终到站' : departTime}
+        </span>
+        <span className="stoptime">
+          {isStartStation || isEndStation ? '-' : stay + '分'}
+        </span>
+      </div>
     </li>
-);
+  );
 })
 
 export default Schedule
