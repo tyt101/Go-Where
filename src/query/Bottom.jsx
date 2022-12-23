@@ -18,6 +18,7 @@ export default function Bottom(props) {
     setDepartTimeEnd,
     setArriveTimeStart,
     setArriveTimeEnd,
+    setHighSpeed,
     // states
     isFilterVisible,
     highSpeed,
@@ -52,7 +53,7 @@ export default function Bottom(props) {
   return (
       <div className="bottom">
         <div className="bottom-filters">
-          <span className='item' onClick={() => toggleOrderType()}>
+          <span className='item' onClick={() => !isFilterVisible && toggleOrderType()}>
             <i className="icon">&#xf065;</i>
             {orderType === orderEnumsType.ORDER_DEPART ? '出发 早→晚' : '耗时 短→长'}
           </span>
@@ -60,7 +61,7 @@ export default function Bottom(props) {
             className={classNames('item',{
               'item-on': highSpeed
             })}
-            onClick={() => toggleHighSpeed()}
+            onClick={() => !isFilterVisible && toggleHighSpeed()}
           >
             <i className="icon">{highSpeed ? '\uf43f' : '\uf43e'}</i>
             只看高铁动车
@@ -69,7 +70,7 @@ export default function Bottom(props) {
             className={classNames('item', {
               'item-on':onlyTickets
             })}
-            onClick={() => toggleOnlyTickets()}
+            onClick={() => !isFilterVisible && toggleOnlyTickets()}
           >
             <i className="icon">{onlyTickets ? '\uf43d' : '\uf43c'}</i>
             只看有票
@@ -108,6 +109,7 @@ export default function Bottom(props) {
               setDepartTimeEnd={setDepartTimeEnd}
               setArriveTimeStart={setArriveTimeStart}
               setArriveTimeEnd={setArriveTimeEnd}
+              setHighSpeed={setHighSpeed}
               toggleIsFilterVisible={toggleIsFilterVisible}
 
             />
@@ -160,6 +162,7 @@ function BottomModal(props) {
     setDepartTimeEnd,
     setArriveTimeStart,
     setArriveTimeEnd,
+    setHighSpeed,
     toggleIsFilterVisible,
     // 
   } = props
@@ -237,11 +240,13 @@ function BottomModal(props) {
     setCheckedTicketsTypeOptions({type: 'reset'})
     setCheckedDepartStationsOptions({type: 'reset'})
     setCheckedArriveStationsOptions({type: 'reset'})
-
+    
     setCheckedDepartTimeStart(0)
     setCheckedDepartTimeEnd(24)
     setCheckedArriveTimeStart(0)
     setCheckedArriveTimeEnd(24)
+
+    setHighSpeed(false)
   }
   const onConfirmFilter = () => {
     setCheckedTrainsType(checkedTrainTypeOptions)

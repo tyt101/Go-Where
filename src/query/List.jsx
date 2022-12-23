@@ -13,7 +13,6 @@ function ListItem(props) {
     priceMsg,
     dayAfter,
   } = props
-  console.log(date)
   const url = useMemo(() => {
     return new URI('ticket.html')
         .setSearch('aStation', aStation)
@@ -60,7 +59,6 @@ function ListItem(props) {
 
 export default function List(props) {
   const {list} = props
-  console.log(list)
   return (
     <ul className="list">
       {

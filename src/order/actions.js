@@ -297,10 +297,8 @@ export function updatePassenger(id, data,keysToBeRemoved = []) {
         newPassengers[i] = Object.assign({},passengers[i],data)
         // 删除
         for(let key of keysToBeRemoved) {
-          console.log(key)
           delete newPassengers[i][key]
         }
-        console.log(newPassengers)
         // 设置
         dispatch(setPassengers(newPassengers))
         break
