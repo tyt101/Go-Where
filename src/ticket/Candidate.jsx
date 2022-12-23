@@ -58,7 +58,7 @@ function Seat(props) {
       >
         {
           channels.map(channel => {
-            return <Channel {...channel} type={type} />
+            return <Channel {...channel} type={type} key={channel.name} />
           })
         }
       </div>
