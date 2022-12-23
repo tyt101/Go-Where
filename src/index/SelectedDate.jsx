@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './SelectedDate.css'
 import dayjs from 'dayjs'
 import {h0} from '../common/time'
-export default function SelectedDate(props) {
+import PropTypes from 'prop-types'
+const SelectedDate = memo(function SelectedDate(props) {
 
   const {time, showDateSelector} = props
 
@@ -16,5 +17,11 @@ export default function SelectedDate(props) {
         <input type="hidden" name="date" value={selectedDateString} />
         {selectedDateString} <span className="selected-week">{weekString}</span>
     </div>
-);
+  );
+})
+
+SelectedDate.propTypes = {
+  time:PropTypes.string.isRequired,
+  showDateSelector:PropTypes.func.isRequired
 }
+export default SelectedDate

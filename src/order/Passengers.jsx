@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
 import './Passengers.css'
-function Passenger(props) {
+const Passenger = memo(function Passenger(props) {
   const {
     id,
     name,
@@ -99,8 +100,22 @@ function Passenger(props) {
       </ol>
     </li>
   )
+})
+Passenger.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  credit: PropTypes.string,
+  birthday: PropTypes.string,
+  gender: PropTypes.string,
+  ticketType: PropTypes.string.isRequired,
+  followAdultName: PropTypes.string,
+  updatePassenger: PropTypes.func.isRequired,
+  showPassengersTypeMenu: PropTypes.func.isRequired,
+  showGenderTypeMenu: PropTypes.func.isRequired,
+  showFollowAdultMenu: PropTypes.func.isRequired,
+  removePassenger: PropTypes.func.isRequired,
 }
-export default function Passengers(props) {
+const Passengers = memo(function Passengers(props) {
   const {
     passengers,
     showPassengersTypeMenu,
@@ -146,4 +161,15 @@ export default function Passengers(props) {
       </section>
     </div>
   )
+})
+Passengers.propTypes = {
+  passengers: PropTypes.array.isRequired,
+  showPassengersTypeMenu: PropTypes.func.isRequired,
+  showGenderTypeMenu: PropTypes.func.isRequired,
+  showFollowAdultMenu: PropTypes.func.isRequired,
+  removePassenger: PropTypes.func.isRequired,
+  createAdult: PropTypes.func.isRequired,
+  createChild: PropTypes.func.isRequired,
+  updatePassenger: PropTypes.func.isRequired,
 }
+export default Passengers

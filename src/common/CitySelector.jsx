@@ -88,6 +88,10 @@ const SuggestItem = memo(function SuggestItem(props){
 
   return (<li className="city-suggest-li" onClick={() => onSelected(name)}>{name}</li>)
 })
+SuggestItem.propTypes = {
+  name:PropTypes.string.isRequired,
+  onSelected:PropTypes.func.isRequired
+}
 const Suggest = memo(function Suggest(props) {
   const {searchKey,onSelected} = props
 
@@ -123,6 +127,10 @@ const Suggest = memo(function Suggest(props) {
     </div>
   )
 })
+Suggest.propTypes = {
+  searchKey:PropTypes.string,
+  onSelected:PropTypes.func.isRequired
+}
 CityList.propTypes = {
   sections: PropTypes.array.isRequired,
   onSelected: PropTypes.func.isRequired

@@ -1,9 +1,9 @@
-import React, { useContext, useMemo, useState } from 'react'
+import React, { memo, useContext, useMemo, useState } from 'react'
 import { TrainContext } from './context'
 import './Candidate.css'
 import URI from 'urijs'
 import dayjs from 'dayjs'
-export default function Candidate(props) {
+function Candidate(props) {
 
   const { tickets } = props
   const [expandIdx, setExpandIdx] = useState(-1)
@@ -30,7 +30,7 @@ export default function Candidate(props) {
     </div>
   )
 }
-function Seat(props) {
+const Seat = memo(function Seat(props) {
   const {
     idx,
     onToggle,
@@ -64,10 +64,10 @@ function Seat(props) {
       </div>
     </li>
   )
-}
+})
 
 
-function Channel(props) {
+const Channel = memo(function Channel(props) {
   const {desc, name, type} = props
   const {
     trainNumberStr,
@@ -97,4 +97,6 @@ function Channel(props) {
         </a>
     </div>
   )
-}
+})
+
+export default Candidate

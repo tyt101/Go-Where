@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './Journey.css'
+import PropTypes from 'prop-types'
 import switchImg from './img/switch.svg'
-export default function Journey(props) {
+const Journey = memo(function Journey(props) {
   const {from, to, showCitySelector, exchangeFromTo} = props
   return (
     <div className="journey">
@@ -28,6 +29,12 @@ export default function Journey(props) {
       </div>
     </div>
   )
+})
+
+Journey.propTypes = {
+  from: PropTypes.string.isRequired,
+  to:PropTypes.string.isRequired,
+  showCitySelector:PropTypes.func.isRequired,
+  exchangeFromTo:PropTypes.func.isRequired,
 }
-
-
+export default Journey

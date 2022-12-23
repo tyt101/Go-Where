@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
 import './Account.css'
+import PropTypes from 'prop-types'
 export default function Account(props) {
   const {passengerLen, price} = props
   const [expanded,setExpanded] = useState(false)
@@ -36,4 +37,8 @@ export default function Account(props) {
       }
     </div>
   )
+}
+Account.propTypes = {
+  passengerLen: PropTypes.number.isRequired,
+  price:PropTypes.number.isRequired,
 }

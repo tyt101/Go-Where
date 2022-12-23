@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './DateSelector.css'
 import classNames from 'classnames'
 import Header from './Header'
 import {h0, h1} from '../common/time'
-
-function Day(props) {
+import PropTypes from 'prop-types'
+const Day = memo(function Day(props) {
   const { day, onSelected } = props;
 
     if (!day) {
@@ -30,9 +30,12 @@ function Day(props) {
             {dateString}
         </td>
     );
+})
+Day.propTypes = {
+  day: PropTypes.number,
+  onSelected: PropTypes.func.isRequired
 }
-
-function Week(props) {
+const Week = memo(function Week(props) {
   const {days, onSelected} = props
   return (
     <tr>
@@ -43,9 +46,12 @@ function Week(props) {
       }
     </tr>
   )
+})
+Week.propTypes = {
+  days: PropTypes.array.isRequired,
+  onSelected: PropTypes.func.isRequired
 }
-
-function Month(props) {
+const Month = memo(function Month(props) {
   const {startingTimeInMonth, onSelected} = props
   const startDay = new Date(startingTimeInMonth)
   const curDay = new Date(startingTimeInMonth)
@@ -94,9 +100,12 @@ function Month(props) {
       </tbody>
     </table>
   )
+})
+Month.propTypes = {
+  startingTimeInMonth:PropTypes.number.isRequired,
+  onSelected:PropTypes.func.isRequired
 }
-
-export default function DateSelector(props) {
+const DateSelector = memo(function DateSelector(props) {
   const {show, onBack, onSelected} = props
   
   const now = h1()
@@ -118,4 +127,11 @@ export default function DateSelector(props) {
       </div>
     </div>
   )
+})
+
+DateSelector.propTypes = {
+  show:PropTypes.bool.isRequired,
+  onBack:PropTypes.func.isRequired,
+  onSelected:PropTypes.func.isRequired,
 }
+export default DateSelector

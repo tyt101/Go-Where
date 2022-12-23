@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
 import './Tickets.css'
-export default function Tickets(props) {
+const Tickets = memo(function Tickets(props) {
   const{
     seatType,
     price,
@@ -15,4 +16,9 @@ export default function Tickets(props) {
       <div className="label">坐席</div>
     </div>
   )
+})
+Tickets.propTypes = {
+  seatType: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 }
+export default Tickets

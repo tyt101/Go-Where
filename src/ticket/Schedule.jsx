@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import URI from 'urijs'
 import dayjs from 'dayjs'
 import './Schedule.css'
 import classNames from 'classnames'
 import leftPad from 'left-pad'
-export default function Schedule(props) {
+function Schedule(props) {
   const {
     date,
     trainNumberStr,
@@ -97,8 +97,7 @@ export default function Schedule(props) {
   )
 }
 
-
-function ScheduleItem(props) {
+const ScheduleItem = memo(function ScheduleItem(props) {
   const {
     index,
     departTime,
@@ -159,4 +158,6 @@ function ScheduleItem(props) {
         </div>
     </li>
 );
-}
+})
+
+export default Schedule

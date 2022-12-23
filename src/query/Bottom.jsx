@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import React, { useMemo, useReducer, useState } from 'react'
+import React, { memo, useMemo, useReducer, useState } from 'react'
 import {orderEnumsType} from '../common/Enum'
+import PropTypes from 'prop-types'
 import Slider from './Slider';
 import './Bottom.css'
-export default function Bottom(props) {
+const Bottom = memo(function Bottom(props) {
   const {
     // actions
     toggleHighSpeed,
@@ -117,6 +118,39 @@ export default function Bottom(props) {
         }
       </div>
   );
+})
+Bottom.propTypes = {
+  // actions
+  toggleHighSpeed: PropTypes.func.isRequired,
+  toggleIsFilterVisible: PropTypes.func.isRequired,
+  toggleOnlyTickets: PropTypes.func.isRequired,
+  toggleOrderType: PropTypes.func.isRequired,
+  setCheckedTrainsType: PropTypes.func.isRequired,
+  setCheckedTicketsType: PropTypes.func.isRequired,
+  setCheckedDepartStations: PropTypes.func.isRequired,
+  setCheckedArriveStations: PropTypes.func.isRequired,
+  setDepartTimeStart: PropTypes.func.isRequired,
+  setDepartTimeEnd: PropTypes.func.isRequired,
+  setArriveTimeStart: PropTypes.func.isRequired,
+  setArriveTimeEnd: PropTypes.func.isRequired,
+  setHighSpeed: PropTypes.func.isRequired,
+  // states
+  isFilterVisible: PropTypes.bool.isRequired,
+  highSpeed: PropTypes.bool.isRequired,
+  orderType: PropTypes.number.isRequired,
+  onlyTickets: PropTypes.bool.isRequired,
+  trainsType: PropTypes.array.isRequired,
+  checkedTrainsType: PropTypes.object.isRequired,
+  ticketsType: PropTypes.array.isRequired,
+  checkedTicketsType: PropTypes.object.isRequired,
+  departStations: PropTypes.array.isRequired,
+  checkedDepartStations: PropTypes.object.isRequired,
+  arriveStations: PropTypes.array.isRequired,
+  checkedArriveStations: PropTypes.object.isRequired,
+  departTimeStart: PropTypes.number.isRequired,
+  departTimeEnd: PropTypes.number.isRequired,
+  arriveTimeStart: PropTypes.number.isRequired,
+  arriveTimeEnd: PropTypes.number.isRequired,
 }
 function checkedReducer(state, actions) {
   const {type, payload} = actions
@@ -137,7 +171,7 @@ function checkedReducer(state, actions) {
   return state
 }
 
-function BottomModal(props) {
+const BottomModal = memo(function BottomModal(props) {
   const {
     // states
     trainsType,
@@ -302,10 +336,36 @@ function BottomModal(props) {
       </div>
     </div>
   )
+})
+
+BottomModal.propTypes = {
+  // states
+  trainsType: PropTypes.array.isRequired,
+  ticketsType: PropTypes.array.isRequired,
+  departStations: PropTypes.array.isRequired,
+  arriveStations: PropTypes.array.isRequired,
+  departTimeStart: PropTypes.number.isRequired,
+  departTimeEnd: PropTypes.number.isRequired,
+  arriveTimeStart: PropTypes.number.isRequired,
+  arriveTimeEnd: PropTypes.number.isRequired,
+  checkedTrainsType: PropTypes.object.isRequired,
+  checkedTicketsType: PropTypes.object.isRequired,
+  checkedDepartStations: PropTypes.object.isRequired,
+  checkedArriveStations: PropTypes.object.isRequired,
+
+  // actions
+  setCheckedTrainsType: PropTypes.func.isRequired,
+  setCheckedTicketsType: PropTypes.func.isRequired,
+  setCheckedDepartStations: PropTypes.func.isRequired,
+  setCheckedArriveStations: PropTypes.func.isRequired,
+  setDepartTimeStart: PropTypes.func.isRequired,
+  setDepartTimeEnd: PropTypes.func.isRequired,
+  setArriveTimeStart: PropTypes.func.isRequired,
+  setArriveTimeEnd: PropTypes.func.isRequired,
+  setHighSpeed: PropTypes.func.isRequired,
+  toggleIsFilterVisible: PropTypes.func.isRequired,
 }
-
-
-function Option(props) {
+const Option = memo(function Option(props) {
   const {title,options,checkedOptions,dispatch} = props
 
   return (
@@ -325,10 +385,15 @@ function Option(props) {
       </ul>
     </div>
   )
+})
+
+Option.propTypes = {
+  title: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
+  checkedOptions: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
-
-
-function Filter(props) {
+const Filter = memo(function Filter(props) {
   const {value, name, checked, dispatch} = props
 
   return (
@@ -339,4 +404,11 @@ function Filter(props) {
       { name }
     </li>
   )
+})
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
+export default Bottom

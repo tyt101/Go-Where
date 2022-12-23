@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import React from 'react'
+import React, { memo } from 'react'
 import './Menu.css'
-function MenuItem(props) {
+import PropTypes from 'prop-types'
+const MenuItem = memo(function MenuItem(props) {
   const {title, active, onClick, value} = props
   return (
     <li 
@@ -9,9 +10,14 @@ function MenuItem(props) {
     onClick={() => onClick(value)}
     >{title}</li>
   )
+})
+MenuItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 }
-
-export default function Menu(props) {
+const Menu = memo(function Menu(props) {
   const {show, hiddenMenu, options, onClick} = props
   return (
     <div>
@@ -31,4 +37,11 @@ export default function Menu(props) {
       </div>
     </div>
   )
+})
+Menu.propTypes = {
+  show: PropTypes.bool.isRequired,
+  hiddenMenu: PropTypes.func.isRequired,
+  options: PropTypes.array,
+  onClick: PropTypes.func,
 }
+export default Menu

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './Header.css'
 
-export default function Header(props) {
+const Header = memo(function Header(props) {
   const {title, onBack} = props
   return (
     <div className="header">
@@ -18,4 +18,6 @@ export default function Header(props) {
       <h1 className="header-title">{title}</h1>
     </div>
   )
-}
+})
+
+export default Header

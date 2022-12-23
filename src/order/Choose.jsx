@@ -1,7 +1,8 @@
 import classNames from 'classnames'
-import React from 'react'
+import React, { memo } from 'react'
 import './Choose.css'
-export default function Choose(props) {
+import PropTypes from 'prop-types'
+const Choose = memo(function Choose(props) {
   const { passengers, updatePassenger } = props
   function createSeat(seatType) {
     
@@ -42,4 +43,9 @@ export default function Choose(props) {
         </div>
     </div>
   )
+})
+Choose.propTypes = {
+  passengers:PropTypes.array.isRequired,
+  updatePassenger:PropTypes.func.isRequired
 }
+export default Choose

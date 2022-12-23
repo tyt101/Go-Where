@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react'
+import React, { memo, useMemo } from 'react'
+import PropTypes from 'prop-types'
 import './List.css'
 import URI from 'urijs';
-function ListItem(props) {
+const ListItem = memo(function ListItem(props) {
   const {
     dTime,
     aTime,
@@ -55,9 +56,19 @@ function ListItem(props) {
       </a>
   </li>
   )
+})
+ListItem.propTypes = {
+  dTime: PropTypes.string.isRequired,
+  aTime: PropTypes.string.isRequired,
+  dStation: PropTypes.string.isRequired,
+  aStation: PropTypes.string.isRequired,
+  trainNumber: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  priceMsg: PropTypes.string.isRequired,
+  dayAfter: PropTypes.string.isRequired,
 }
-
-export default function List(props) {
+const List = memo(function List(props) {
   const {list} = props
   return (
     <ul className="list">
@@ -68,4 +79,8 @@ export default function List(props) {
       }
     </ul>
   )
+})
+List.propTypes = {
+  list: PropTypes.array.isRequired,
 }
+export default List

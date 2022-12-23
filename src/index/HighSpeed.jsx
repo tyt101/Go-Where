@@ -1,7 +1,8 @@
 import classNames from 'classnames'
-import React from 'react'
+import React, { memo } from 'react'
+import PropTypes from 'prop-types'
 import './HighSpeed.css'
-export default function HighSpeed(props) {
+const HighSpeed = memo(function HighSpeed(props) {
 
   const {highSpeed, toggleHighSpeed} = props
 
@@ -25,4 +26,9 @@ export default function HighSpeed(props) {
       </div>
     </div>
   )
+})
+HighSpeed.propTypes = {
+  highSpeed: PropTypes.bool.isRequired,
+  toggleHighSpeed:PropTypes.func.isRequired
 }
+export default HighSpeed
