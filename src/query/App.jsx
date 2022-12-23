@@ -78,7 +78,7 @@ function App(props) {
     dispatch(setHighSpeed(highSpeed === 'true'))
     // 设置解析完成
     dispatch(setSearchParsed(true))
-  },[from, to, departDate, dispatch])
+  },[dispatch])
 
   // 获取trainList
   useEffect(() => {
@@ -159,6 +159,7 @@ function App(props) {
       setDepartTimeEnd,
       setArriveTimeStart,
       setArriveTimeEnd,
+      setHighSpeed,
 
     },dispatch)
   },[dispatch])
