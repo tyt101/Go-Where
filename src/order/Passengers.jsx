@@ -13,13 +13,14 @@ function Passenger(props) {
     showPassengersTypeMenu,
     showGenderTypeMenu,
     showFollowAdultMenu,
+    removePassenger,
   } = props
 
   const isAdult = ticketType === 'Adult';
 
   return (
     <li className="passenger">
-      <i className="delete">
+      <i className="delete" onClick={() => removePassenger(id)}>
           —
       </i>
       <ol className="items">
@@ -105,6 +106,7 @@ export default function Passengers(props) {
     showPassengersTypeMenu,
     showGenderTypeMenu,
     showFollowAdultMenu,
+    removePassenger,
     createAdult,
     createChild,
     updatePassenger
@@ -129,6 +131,7 @@ export default function Passengers(props) {
             showPassengersTypeMenu={showPassengersTypeMenu}
             showGenderTypeMenu={showGenderTypeMenu}
             showFollowAdultMenu={showFollowAdultMenu}
+            removePassenger={removePassenger}
             />
           })
         }

@@ -309,5 +309,16 @@ export function updatePassenger(id, data,keysToBeRemoved = []) {
   }
 }
 
+export function removePassenger(id) {
+  return (dispatch, getState) => {
+    const {passengers} = getState()
+    dispatch(setPassengers(passengers.filter(
+      passenger => {
+        return passenger.id !== id
+      }
+    )))
+  }
+}
+
 
 

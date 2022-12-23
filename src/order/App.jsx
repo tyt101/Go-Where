@@ -3,7 +3,9 @@ import Header from '../common/Header'
 import Detail from '../common/Detail'
 import Tickets from './Tickets'
 import Passengers from './Passengers'
+import Choose from './Choose'
 import Menu from './Menu'
+import Account from './Account'
 import { connect } from 'react-redux'
 import URI from 'urijs'
 import {
@@ -24,9 +26,10 @@ import {
   showGenderTypeMenu,
   showFollowAdultMenu,
   hiddenMenu,
+  removePassenger,
+  setDurationTime
 } from './actions'
 import dayjs from 'dayjs'
-import { setDurationStr } from '../ticket/actions'
 import { bindActionCreators } from 'redux'
 function App(props) {
   const {
@@ -80,7 +83,7 @@ function App(props) {
         dispatch(setArriveDate(dayjs(arriveDate).valueOf()))
         dispatch(setDepartTimeStr(departTimeStr))
         dispatch(setArriveTimeStr(arriveTimeStr))
-        dispatch(setDurationStr(durationStr))
+        dispatch(setDurationTime(durationStr))
         dispatch(setPrice(price))
       })
     }, [searchParsed, departStationStr, arriveStationStr, seatType, departDate, dispatch]
@@ -93,6 +96,7 @@ function App(props) {
       showPassengersTypeMenu,
       showGenderTypeMenu,
       showFollowAdultMenu,
+      removePassenger,
     },dispatch)
   },[dispatch])
 
@@ -102,34 +106,51 @@ function App(props) {
     },dispatch)
   },[dispatch])
 
+  const ChooseCbs = useMemo(() => {
+    return bindActionCreators({
+      updatePassenger,
+    },dispatch)
+  },[dispatch])
+
+  const passengerLen = useMemo(() => {
+    return passengers.length
+  },[passengers])
   if(!searchParsed) return null
 
+  const clientHeight = window.screen.availHeight
   return (
     <div className="app">
       <div className="header-wrapper">
         <Header title="订单填写" onBack={onBack} />
       </div>
-      <div className="detail-wrapper">
-        <Detail
-            departDate={departDate}
-            arriveDate={arriveDate}
-            departTimeStr={departTimeStr}
-            arriveTimeStr={arriveTimeStr}
-            trainNumberStr={trainNumberStr}
-            departStationStr={departStationStr}
-            arriveStationStr={arriveStationStr}
-            durationTime={durationTime}
-        >
-            <span
-                style={{ display: 'block' }}
-                className="train-icon"
-            ></span>
-        </Detail>
+      <div style={{height:parseInt(clientHeight)-104+'px', overflow:'scroll'}}>
+        <div className="detail-wrapper">
+          <Detail
+              departDate={departDate}
+              arriveDate={arriveDate}
+              departTimeStr={departTimeStr}
+              arriveTimeStr={arriveTimeStr}
+              trainNumberStr={trainNumberStr}
+              departStationStr={departStationStr}
+              arriveStationStr={arriveStationStr}
+              durationStr={durationTime}
+          >
+              <span
+                  style={{ display: 'block' }}
+                  className="train-icon"
+              ></span>
+          </Detail>
 
+        </div>
+        <Tickets seatType={seatType} price={price} />
+        <Passengers passengers={passengers} {...PassengersCbs} />
+        {
+          passengers.length > 0 && <Choose passengers={passengers} {...ChooseCbs}/>
+        }
+        <Menu show={isMenuVisible} {...MenuCbs} {...menu} />
       </div>
-      <Tickets seatType={seatType} price={price} />
-      <Passengers passengers={passengers} {...PassengersCbs} />
-      <Menu show={isMenuVisible} {...MenuCbs} {...menu} />
+      
+      <Account passengerLen={passengerLen} price={price} />
     </div>
   )
 }
